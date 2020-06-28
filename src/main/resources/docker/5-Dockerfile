@@ -1,0 +1,11 @@
+1、编写Dockerfile 文件
+    FROM java:8
+    VOLUME /tmp
+    ADD springboot-0.0.1-SNAPSHOT.jar /springboot-master.jar
+    ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/springboot-master.jar"]
+2、部署文件
+    创建docker文件夹，项目jar包 和 Dockerfile文件复制到该文件夹下
+3、制作镜像
+    docker build -t docker-springboot-v1 .
+4、启动容器
+    docker run -itd -p 8081:8082 --name docker-springboot docker-springboot-v1 /bin/bash
