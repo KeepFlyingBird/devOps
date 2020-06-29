@@ -1,0 +1,46 @@
+1、拉取镜像：
+    docker pull gitlab/gitlab-ce:latest
+2、启动镜像
+    创建目录：
+        mkdir -p /xyf/gitlab/etc
+        mkdir -p /xyf/gitlab/log
+        mkdir -p /xyf/gitlab/data
+    运行：
+    docker run \
+        --detach \
+        --publish 8443:443 \
+        --publish 8090:80 \
+        --name gitlab \
+        --restart unless-stopped \
+        -v /xyf/gitlab/etc:/etc/gitlab \
+        -v /xyf/gitlab/log:/var/log/gitlab \
+        -v /xyf/gitlab/data:/var/opt/gitlab \
+        gitlab/gitlab-ce:latest
+3、修改GitLab主机名
+    1、vi /xyf/gitlab/etc/gitlab.rb
+        external_url改成部署机器的域名或者IP地址：external_url 'http://192.168.213.128'
+    2、vi /xyf/gitlab/data/gitlab-rails/etc/gitlab.yml
+        找到关键字 * ## Web server settings *
+        将host的值改成映射的外部主机ip地址和端口，这里会显示在gitlab克隆地址
+        host: 192.168.213.128
+        port: 8090
+4、重启Gitlab
+    像上面步骤修改了GitLab的ip地址一样,临时修改了GitLab的配置之后，得执行如下的命令，应用重新配好的配置并重启GitLab,然后查看GitLab的状态。
+    因为是容器，所以要进入到gitlab容器中执行命令
+    docker exec -ti gitlab /bin/bash
+    然后
+    gitlab-ctl reconfigure  #重新应用gitlab的配置
+    gitlab-ctl restart    #gitlab-ctl restart
+    gitlab-ctl status   #查看gitlab运行状态
+5、登陆
+    http://192.168.182.129:8090
+6、更新登录密码 账号：root
+    1、进入容器：docker exec -it 容器id /bin/bash
+    2、执行命令：gitlab-rails console -e production，等待控制台加载完毕
+    3、查找用户：user = User.where(id: 1).first
+    4、更新密码：
+        user.password = 'xyfc123456'
+        user.password_confirmation = 'xyfc123456'
+    5、保存：user.save!
+
+参考博客：https://www.cnblogs.com/zuxing/articles/9329152.html

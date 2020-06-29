@@ -2,6 +2,7 @@
     docker run -itd -p 8081:8082 --name 别名 镜像 /bin/bash
     -i: 交互式操作；-t: 终端；-d: 后台运行; -p: 端口 外部端口:容器端口
     重启容器：docker restart 容器ID
+    停止容器：docker stop 容器ID
 2、查所有容器
     docker ps -a
     查看运行的容器：docker ps

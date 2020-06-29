@@ -24,3 +24,4 @@
         案列：grep -A 30 "CmbcAction.saveProjInfo.param:" catalina.out
 
     less
+6、ip ro sh
