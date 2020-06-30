@@ -8,3 +8,8 @@
     sudo systemctl enable docker
 5、开启docker服务
     sudo systemctl start docker
+    重启docker服务：systemctl restart docker
+6、docker账号：
+    https://hub.docker.com/  wyy520 xyfc123456
+
+
