@@ -1,0 +1,6 @@
+网关常见功能：
+    1、动态路由
+    2、熔断
+    3、限流操作
+    4、自定义Gatewayfilter
+    5、自定义GlobalFilter
