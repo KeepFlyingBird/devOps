@@ -1,0 +1,18 @@
+单击：
+1、consul官网下载consul zip文件
+2、consul zip文件解压consul 上传到阿里云 /xyf/consul/consul_1.8.0_linux_amd64目录下
+3、启动consol服务
+    nohup ./consul agent -dev -ui -client 172.17.139.60  &
+    nohup ./consul agent -dev -ui -client 172.17.139.60 >/xyf/consul/consul_1.8.0_linux_amd64/nohup.out 2>&1 &
+    ./consul agent -dev -ui -node=consul-dev -client=172.17.139.60
+    47.94.134.148:8500
+4、查看consul服务
+   查看端口：
+    netstat -anp|grep 8500
+   查看进程：
+    ps -aux|grep
+5、关闭consul服务
+    kill -9 进程号
+
+注意：
+    部署consul服务器是否能够访问服务提供者，部署在阿里云consul服务，无法访问本地服务提供者，健康检查失败
