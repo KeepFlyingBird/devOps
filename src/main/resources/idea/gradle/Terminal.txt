@@ -1,0 +1,4 @@
+1、查看当前用户名
+    git config user.name
+2、修改用户名
+    git config --global user.name "liujintao"
