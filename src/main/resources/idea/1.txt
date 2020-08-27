@@ -1,0 +1,3 @@
+1、问题：idea2020.1.2激活后，隔天又得重新激活
+    1.1、C:\Windows\System32\drivers\etc下的hosts文件添加：0.0.0.0 account.jetbrains.com
+    1.2、取消更新：Settings->Apearance & Behavior->System Settings->Updates
