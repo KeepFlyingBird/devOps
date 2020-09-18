@@ -1,0 +1,2 @@
+1、问题：idea2020.1.2激活后，隔天又得重新激活
+    参考网址：https://www.cnblogs.com/niceyoo/p/12132052.html
